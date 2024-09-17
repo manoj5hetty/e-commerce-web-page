@@ -1,0 +1,231 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Montserrat', sans-serif;
+}
+
+body {
+    overflow-x: hidden; /* Only hide horizontal scrolling */
+}
+
+.carousel {
+    height: 100vh;
+    overflow: hidden;
+    position: relative;
+    width: 100%;
+}
+
+.item {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    z-index: 1;
+    transition: opacity 0.5s ease-in-out, z-index 0s 0.5s; /* Wait for opacity transition before setting z-index */
+}
+
+.item.active {
+    opacity: 1;
+    z-index: 2;
+    transition: opacity 0.5s ease-in-out, z-index 0s; /* No delay for active item */
+}
+
+.item img {
+    width: 100%; /* Adjust this based on how you want the image to fit */
+    height: 100%;
+    object-fit: cover; /* This will ensure the image covers the container without stretching */
+}
+
+.item .video-box {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%; /* Full height to make the video fullscreen */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: 0.4s ease;
+    transition-delay: 0.6s;
+    overflow: hidden;
+    background: none; /* No background for the video box */
+}
+
+.item.active .video-box {
+    transform: translateY(0);
+}
+
+/* Ensure video or image fits the container properly */
+.video-box video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Cover the container fully */
+}
+
+/* Removing the background from each video box item */
+.item:nth-child(1) .video-box,
+.item:nth-child(2) .video-box,
+.item:nth-child(3) .video-box,
+.item:nth-child(4) .video-box {
+    background: none; /* No background for the video box */
+}
+
+/* Other existing styles */
+.item .info-box {
+    position: absolute;
+    left: 5%;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 450px;
+    height: 280px;
+    z-index: 1;
+    overflow: hidden;
+}
+
+.item.active .info-box {
+    z-index: 2;
+}
+
+.info-box .info-slider {
+    transition: .7s cubic-bezier(0.68, -0.55, 0.1, 1);
+}
+
+.info-slider .info-item {
+    height: 280px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    color: #fff;
+    transform: translateY(calc(var(--i) * 100%));
+}
+
+.info-item h2 {
+    font-size: 40px;
+    line-height: 1;
+}
+
+.info-item p {
+    font-size: 16px;
+    margin: 15px 0 20px;
+    text-align: justify;
+    color: aqua;
+}
+
+.info-item .btn {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    width: 180px;
+    height: 47px;
+    background: transparent;
+    border: 2px solid #fff;
+    border-radius: 40px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, .1);
+    font-size: 16px;
+    color: #fff;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.thumb {
+    position: absolute;
+    right: 5%;
+    top: 36%;
+    transform: translateY(-50%);
+    list-style: none;
+    z-index: 100;
+}
+
+.thumb li {
+    width: 95px;
+    height: 95px;
+    border-radius: 50%;
+    box-shadow: 0 0 10px rgba(0, 0, 0, .1);
+    cursor: pointer;
+    margin: 25px 0;
+    overflow: hidden;
+}
+
+.thumb li.selected {
+    border: 3px solid #fff;
+}
+
+.thumb li.disabled {
+    pointer-events: none;
+}
+
+.thumb li img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Sections for other content */
+#new-arrivals, #products, #solutions {
+  padding: 50px 0;
+}
+
+#solutions.bg-light {
+  background-color: #f8f9fa;
+}
+
+/* Ensure uniform height for product images in cards */
+.card-img-top {
+    height: 200px;
+    object-fit: cover; /* Ensures the image covers the card without stretching */
+  }
+  
+  .card-body {
+    text-align: center;
+  }
+  
+  /* Add some space between the cards */
+  .card {
+    margin-bottom: 20px;
+  }
+  
+
+/* Product image styling for uniform size */
+#new-arrivals img, #products img {
+  width: 100%; /* Images fit to container width */
+  height: 200px; /* Set consistent height */
+  object-fit: cover; /* Ensures image covers box without stretching */
+  border-radius: 8px; /* Optional: rounded corners */
+}
+
+.hero {
+  background: #343a40;
+  color: #fff;
+  text-align: center;
+  padding: 100px 20px;
+}
+
+.hero h1 {
+  font-size: 48px;
+  margin-bottom: 20px;
+}
+
+.hero h2 {
+  font-size: 36px;
+  margin-bottom: 20px;
+}
+
+.hero p {
+  font-size: 18px;
+}
+
+.footer {
+  background-color: #6c757d;
+  color: white;
+  padding: 20px;
+  text-align: center;
+}
+
+.navbar {
+  margin-bottom: 20px;
+}
